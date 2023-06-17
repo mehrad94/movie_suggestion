@@ -1,0 +1,65 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "app/assets/fonts/FontAwesome5_Brands.ttf",
+      "sha1": "3fa2d67cef22da5c3f3eb5730c6afbd6fecf0372"
+    },
+    {
+      "path": "app/assets/fonts/FontAwesome5_Regular.ttf",
+      "sha1": "7d849a3981a716e2ba4a84634bc57d0b8054a6a3"
+    },
+    {
+      "path": "app/assets/fonts/FontAwesome5_Solid.ttf",
+      "sha1": "c1b9fae262f42868c075ac865a8ab34920e20a2c"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-Bold.ttf",
+      "sha1": "2aa50c1687d153dfb6c672708f07535afa106143"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-BoldItalic.ttf",
+      "sha1": "bbc28b915a8db0c7c4ad5ac41d9d2c09f19a9045"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-ExtraBold.ttf",
+      "sha1": "fe376c41c66591e1f9a1fdc2c9e49b6a95842906"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-ExtraBoldItalic.ttf",
+      "sha1": "5dce9decdd96b7c0c1851d4afa3569130eb6f3cd"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-Italic.ttf",
+      "sha1": "8209921584c844208d1432e678277f79f03cae01"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-Light.ttf",
+      "sha1": "bd83d2206e7732d1e68e2e634cbdb2a87f144d9c"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-LightItalic.ttf",
+      "sha1": "c7115fe69af68425f070ee37fcb84c4f8e72861d"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-Medium.ttf",
+      "sha1": "3deb3df26da982cf593cd1935f94c55d2e214a70"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-MediumItalic.ttf",
+      "sha1": "1d8be797b250b879c094111bcc2eb2cc16908440"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-Regular.ttf",
+      "sha1": "ca6290d3746be892304a90269fd2434040c1859e"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-SemiBold.ttf",
+      "sha1": "2444e80d30298c105bda7dd0019b16b7e2766f7a"
+    },
+    {
+      "path": "app/assets/fonts/ShantellSans-SemiBoldItalic.ttf",
+      "sha1": "f1a501f70a2ea81f6d87527659d4c96698c0ab36"
+    }
+  ]
+}
