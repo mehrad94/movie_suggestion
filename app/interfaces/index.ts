@@ -73,3 +73,19 @@ export interface NewsType {
   link: string;
   duration: string;
 }
+
+export interface ISearchResponse {
+  people: {
+    link: string;
+    avatar: string;
+    title: string;
+    subtitle: string;
+  }[];
+  titles: {
+    link: string;
+    avatar: string;
+    title: string;
+    year: string;
+    stars: string[];
+  }[];
+}

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {MovieType1, NewsType} from '../interfaces';
+import {ISearchResponse, MovieType1, NewsType} from '../interfaces';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -19,12 +19,20 @@ export const apiSlice = createApi({
     latestNews: builder.query<NewsType[], void>({
       query: () => '/special-list/latest',
     }),
+    topMovie: builder.query<MovieType1[], void>({
+      query: () => '/special-list/movie/250',
+    }),
+    search: builder.query<ISearchResponse, string>({
+      query: searchParam => `/movie/s/${searchParam}`,
+    }),
   }),
 });
 
 export const {
+  useTopMovieQuery,
   useLatestNewsQuery,
   useBoxOfficeQuery,
   usePopularMovieQuery,
   usePopularTvShowQuery,
+  useSearchQuery,
 } = apiSlice;

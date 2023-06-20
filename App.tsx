@@ -1,11 +1,9 @@
-import React from 'react';
-import {View} from 'react-native';
-import {Provider} from 'react-redux';
-import {CustomInput} from './app/components';
-import {store} from './app/redux/store';
 import {NavigationContainer} from '@react-navigation/native';
-import Navigation from './app/navigation';
+import React from 'react';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {Provider} from 'react-redux';
+import Navigation from './app/navigation';
+import {store} from './app/redux/store';
 
 const App = () => {
   return (

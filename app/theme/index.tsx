@@ -27,6 +27,13 @@ export const SIZES = {
   large: 24,
   width: Dimensions.get('screen').width,
   height: Dimensions.get('screen').height,
+  // Carousel
+  SCALE: 0.7,
+};
+
+export const CAROUSEL_SIZE = {
+  ITEM_WIDTH: SIZES.width * SIZES.SCALE,
+  ITEM_HEIGHT: SIZES.height / 2,
 };
 
 export const FONTS = {

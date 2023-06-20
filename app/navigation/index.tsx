@@ -3,7 +3,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {HomeScreen, NewsScreen, SearchScreen, TopScreen} from '../screen';
+import {HomeScreen, SearchScreen, TopScreen} from '../screen';
 import {COLORS, SIZES} from '../theme';
 import {
   SCREEN_HOME,
@@ -70,7 +70,6 @@ const Navigation = () => {
       })}>
       <Tab.Screen name={SCREEN_HOME} component={HomeScreen} />
       <Tab.Screen name={SCREEN_SEARCH} component={SearchScreen} />
-      <Tab.Screen name={SCREEN_NEWS} component={NewsScreen} />
       <Tab.Screen name={SCREEN_TOP} component={TopScreen} />
     </Tab.Navigator>
   );
