@@ -36,7 +36,7 @@ const CarouselVertical: React.FC<Props> = ({data}) => {
     [RIGHT_OFFSET],
   );
   const [currentImage, setCurrentImage] = React.useState(
-    posterUrl(data[0].poster, String(SIZES.width)),
+    posterUrl(data[0].poster, '256'),
   );
   const [currentMovie, setCurrentMovie] = React.useState({
     title: data[0].title,
@@ -63,20 +63,21 @@ const CarouselVertical: React.FC<Props> = ({data}) => {
         </BlurView>
       </View>
 
-      <Image
-        blurRadius={15}
+      {/* <Image
+        blurRadius={10}
         source={{uri: currentImage}}
         style={styles.fullPageBackgroundImage}
-      />
+      /> */}
       <Carousel
-        onScrollEnd={index => {
-          setCurrentMovie({
-            title: data[index].title,
-            rating: data[index].rating,
-            rank: index + 1,
-          });
-          setCurrentImage(posterUrl(data[index].poster));
-        }}
+        windowSize={2}
+        // onScrollEnd={index => {
+        //   setCurrentMovie({
+        //     title: data[index].title,
+        //     rating: data[index].rating,
+        //     rank: index + 1,
+        //   });
+        //   setCurrentImage(posterUrl(data[index].poster));
+        // }}
         loop
         vertical
         style={styles.carouselContainer}
@@ -85,6 +86,7 @@ const CarouselVertical: React.FC<Props> = ({data}) => {
         height={CAROUSEL_SIZE.ITEM_HEIGHT}
         data={data}
         renderItem={({index, item}) => {
+          console.log({i: posterUrl(item.poster, '256')});
           return (
             <View key={index}>
               <View>
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   },
   imdbLogo: {
     width: SIZES.width / 10,
-    height: SIZES.height / 35,
+    height: SIZES.height / 40,
     marginTop: 4,
     marginRight: 4,
     borderRadius: SIZES.small,

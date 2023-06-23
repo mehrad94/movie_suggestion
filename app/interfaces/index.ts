@@ -89,3 +89,10 @@ export interface ISearchResponse {
     stars: string[];
   }[];
 }
+
+export interface IGenreResponse {
+  title: string;
+}
+export interface IGenre {
+  title: string;
+}

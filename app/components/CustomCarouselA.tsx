@@ -14,27 +14,25 @@ const CustomCarouselA = ({data}: Props) => {
     <View>
       <View style={{flex: 1}}>
         <Carousel
+          windowSize={3}
           loop
           width={SIZES.width}
           height={SIZES.width}
-          pagingEnabled={true}
-          snapEnabled={true}
           mode="parallax"
           modeConfig={{
-            parallaxScrollingScale: 1,
+            parallaxScrollingScale: 0.9,
             parallaxScrollingOffset: SIZES.width / 2.5,
           }}
           data={data}
-          scrollAnimationDuration={1000}
           renderItem={({item, index}) => {
             return (
               <View style={styles.container} key={index}>
                 <View style={styles.content}>
                   <Image
-                    resizeMode="contain"
+                    resizeMode="stretch"
                     style={styles.poster}
                     source={{
-                      uri: posterUrl(item.poster, String(SIZES.height / 2.5)),
+                      uri: posterUrl(item.poster, String(SIZES.height / 4)),
                     }}
                   />
                   <Text style={[styles.movieTitle, FONTS.h2]}>
@@ -80,6 +78,7 @@ const styles = StyleSheet.create({
     width: SIZES.width / 2,
   },
   poster: {
+    width: SIZES.height / 4,
     height: SIZES.height / 3,
     borderRadius: SIZES.large,
     padding: SIZES.small,

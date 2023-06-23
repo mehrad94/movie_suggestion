@@ -12,6 +12,26 @@ export const COLORS = {
   GRAY_TRANSPARENT: 'rgba(218, 218, 218, 0.2);',
   BLACK_TRANSPARENT: 'rgba(218, 218, 218, 0.6)',
 };
+export const RANDOM_COLOR = [
+  '#070A52',
+  '#D21312',
+  '#2D033B',
+  '#FF4C29',
+  '#7B113A',
+  '#30475E',
+  '#413C69',
+  '#293A80',
+  '#C70D3A',
+  '#5F1854',
+  '#045757',
+  '#470031',
+  '#333F44',
+  '#090030',
+  '#5454C5',
+  '#3D2E4F',
+  '#321D2F',
+  '#343434',
+];
 
 export const SIZES = {
   largeRadius: 30,

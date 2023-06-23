@@ -1,7 +1,15 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {CarouselNews, CustomCarouselA, CustomLoading} from '../components';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {
+  CarouselMovie,
+  CarouselNews,
+  CustomLoading,
+  GenreList,
+} from '../components';
+import {
+  useGetMovieGenreQuery,
+  useGetShowGenreQuery,
   useLatestNewsQuery,
   usePopularMovieQuery,
   usePopularTvShowQuery,
@@ -9,12 +17,17 @@ import {
 import {COLORS, FONTS, SIZES} from '../theme';
 
 const HomeScreen = () => {
-  const {data, isLoading} = usePopularMovieQuery();
+  const popularMovie = usePopularMovieQuery();
   const popularTvShow = usePopularTvShowQuery();
   const latestNews = useLatestNewsQuery();
+  const movieGenre = useGetMovieGenreQuery();
+  const showGenre = useGetShowGenreQuery();
+
   if (
-    isLoading ||
-    !data ||
+    !showGenre.data ||
+    !movieGenre.data ||
+    popularMovie.isLoading ||
+    !popularMovie.data ||
     popularTvShow.isLoading ||
     !popularTvShow.data ||
     !latestNews.data ||
@@ -29,20 +42,20 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        <Text style={[styles.boxOfficeHeader, FONTS.h1]}>Latest News</Text>
+        <Text style={styles.boxOfficeHeader}>Imdb Live</Text>
         <CarouselNews data={latestNews.data} />
-        <Text style={[styles.boxOfficeHeader, FONTS.h1]}>
-          Most Popular Movie
-        </Text>
-        <View style={styles.popularMovieContainer}>
-          <CustomCarouselA data={data!} />
-        </View>
-        <Text style={[styles.boxOfficeHeader, FONTS.h1]}>
-          Most Popular Tv Show
-        </Text>
-        <View style={styles.popularMovieContainer}>
-          <CustomCarouselA data={popularTvShow.data!} />
-        </View>
+
+        <Text style={styles.boxOfficeHeader}>Trend Movie</Text>
+        <CarouselMovie data={popularMovie.data} />
+
+        <Text style={styles.boxOfficeHeader}>Movie Genre</Text>
+        <GenreList data={movieGenre.data} />
+
+        <Text style={styles.boxOfficeHeader}>Trend Movie</Text>
+        <CarouselMovie data={popularTvShow.data} />
+
+        <Text style={styles.boxOfficeHeader}>Tv Show Genre</Text>
+        <GenreList data={showGenre.data} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -57,12 +70,11 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   boxOfficeHeader: {
-    marginTop: SIZES.medium,
+    ...FONTS.h1,
     marginHorizontal: SIZES.horizontalPadding,
     color: COLORS.WHITE,
-  },
-  popularMovieContainer: {
-    marginHorizontal: SIZES.small,
+    marginTop: SIZES.medium,
+    marginBottom: SIZES.small,
   },
   containerLoading: {
     backgroundColor: COLORS.PRIMARY,

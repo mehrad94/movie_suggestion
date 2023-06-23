@@ -52,7 +52,7 @@ function iconNameGenerator(screenName: string) {
 const Navigation = () => {
   return (
     <Tab.Navigator
-      initialRouteName={SCREEN_SEARCH}
+      initialRouteName={SCREEN_HOME}
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarStyle: {

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  FlatList,
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {Movie} from '../interfaces';
 import {makePosterPath} from '../utils';
 import CustomLoading from './CustomLoading';
@@ -23,12 +16,7 @@ const MovieItem: React.FC<Movie> = ({
   poster_path,
 }) => {
   return (
-    <View
-      style={{
-        backgroundColor: 'red',
-        width: SIZES.width / 2,
-        justifyContent: 'space-between',
-      }}>
+    <View style={styles.itemContainer}>
       <ImageBackground
         style={{width: '100%', height: 200}}
         source={{uri: makePosterPath(poster_path, 'w200')}}
@@ -57,4 +45,10 @@ const MovieList: React.FC<Props> = ({data, isLoading}) => {
 
 export default MovieList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  itemContainer: {
+    backgroundColor: 'red',
+    width: SIZES.width / 2,
+    justifyContent: 'space-between',
+  },
+});
