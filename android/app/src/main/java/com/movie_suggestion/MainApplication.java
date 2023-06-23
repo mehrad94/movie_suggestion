@@ -1,4 +1,4 @@
-package com.movie_suggestion;
+package com.mehradfarahnak.www.movie.suggestion;
 
 import android.app.Application;
 import android.content.Context;

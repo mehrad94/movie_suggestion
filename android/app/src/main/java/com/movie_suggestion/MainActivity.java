@@ -1,4 +1,4 @@
-package com.movie_suggestion;
+package com.mehradfarahnak.www.movie.suggestion;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -16,7 +16,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "movie_suggestion";
+    return "Movie_Suggestion";
   }
 
   /**

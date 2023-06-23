@@ -19,7 +19,7 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.movie_suggestion.BuildConfig;
+import com.mehradfarahnak.www.movie.suggestion.BuildConfig;
 import com.movie_suggestion.newarchitecture.components.MainComponentsRegistry;
 import com.movie_suggestion.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
