@@ -58,9 +58,11 @@ export default CarouselMovie;
 
 const styles = StyleSheet.create({
   txtTitle: {
+    color: COLORS.WHITE,
     ...FONTS.h2,
   },
   txtRating: {
+    color: COLORS.WHITE,
     ...FONTS.h2,
     marginLeft: SIZES.small,
   },

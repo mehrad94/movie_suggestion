@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     marginHorizontal: SIZES.small,
   },
   itemContainer: {
-    width: SIZES.width / 3,
     height: SIZES.height / 15,
     margin: SIZES.small,
     borderRadius: SIZES.small,
@@ -53,6 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   txtGenre: {
-    ...FONTS.h1,
+    color: COLORS.WHITE,
+    ...FONTS.h2,
   },
 });

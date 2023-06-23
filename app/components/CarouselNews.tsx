@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   itemLabel: {
-    color: 'white',
+    color: COLORS.WHITE,
     backgroundColor: COLORS.GRAY_TRANSPARENT,
     width: '100%',
     paddingHorizontal: 8,
