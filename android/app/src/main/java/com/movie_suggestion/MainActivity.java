@@ -16,7 +16,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Movie_Suggestion";
+    return "movie_suggestion";
   }
 
   /**
