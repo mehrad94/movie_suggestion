@@ -1,6 +1,6 @@
 {
   "name": "movie_suggestion",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "private": true,
   "scripts": {
     "version": "npx react-native-version --never-amend",
@@ -11,7 +11,6 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.0.2",
     "@react-native-community/blur": "^4.3.2",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",

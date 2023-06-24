@@ -4,6 +4,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {
   CarouselMovie,
   CarouselNews,
+  CustomError,
   CustomLoading,
   GenreList,
 } from '../components';
@@ -23,6 +24,27 @@ const HomeScreen = () => {
   const movieGenre = useGetMovieGenreQuery();
   const showGenre = useGetShowGenreQuery();
 
+  if (
+    popularMovie.isError ||
+    popularTvShow.isError ||
+    latestNews.isError ||
+    movieGenre.isError ||
+    showGenre.isError
+  ) {
+    return (
+      <SafeAreaView style={styles.containerLoading}>
+        <CustomError
+          onClick={() => {
+            popularMovie.refetch();
+            popularTvShow.refetch();
+            latestNews.refetch();
+            movieGenre.refetch();
+            showGenre.refetch();
+          }}
+        />
+      </SafeAreaView>
+    );
+  }
   if (
     !showGenre.data ||
     !movieGenre.data ||

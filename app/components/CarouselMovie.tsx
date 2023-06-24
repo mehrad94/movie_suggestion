@@ -21,9 +21,6 @@ const CarouselMovie: React.FC<Props> = ({data}) => {
           resizeMode="stretch"
           style={styles.movieBanner}
           source={{uri: posterUrl(movie.poster, String(SIZES.width))}}
-          onLoad={() => {
-            console.log('IMAGE' + movie.title + ' Loaded');
-          }}
         />
         <View style={styles.movieContentContainer}>
           <Text
