@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import {CustomLoading} from '../components';
+import {CustomLoading, VerticalCarousel} from '../components';
 import {useTopMovieQuery} from '../redux/api-slice';
 import {COLORS} from '../theme';
 
@@ -13,10 +13,14 @@ const TopScreen = () => {
       </SafeAreaView>
     );
   }
-  return <SafeAreaView style={styles.container} />;
+  return (
+    <SafeAreaView style={styles.container}>
+      <VerticalCarousel data={data} />
+    </SafeAreaView>
+  );
 };
 
-export default TopScreen;
+export default memo(TopScreen);
 
 const styles = StyleSheet.create({
   containerLoading: {

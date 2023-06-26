@@ -5,3 +5,6 @@ export {default as CarouselNews} from './CarouselNews';
 export {default as CarouselMovie} from './CarouselMovie';
 export {default as GenreList} from './GenreList';
 export {default as CustomError} from './CustomError';
+export {default as VerticalCarousel} from './VerticalCarousel';
+export {default as BottomTabIcon} from './BottomTabIcon';
+export {default as ProgressBar} from './ProgressBar';

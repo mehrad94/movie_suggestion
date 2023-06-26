@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {NewsType} from '../interfaces';
@@ -41,7 +41,7 @@ const CarouselNews: React.FC<Props> = ({data}) => {
   );
 };
 
-export default CarouselNews;
+export default memo(CarouselNews);
 
 const styles = StyleSheet.create({
   newsItem: {

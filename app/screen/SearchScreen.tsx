@@ -52,7 +52,6 @@ const SearchedCardPeople: React.FC<ISearchedCardPeople> = ({
           />
         </View>
       )}
-
       <View style={styles.titleHolder}>
         <Text style={[FONTS.h2, {color: COLORS.WHITE}]}>{title}</Text>
         <Text style={[FONTS.h3, {color: COLORS.WHITE, width: SIZES.width / 2}]}>
@@ -180,6 +179,7 @@ const SearchScreen = () => {
   const [searchValue, setSearchValue] = useState('');
   const debouncedSearchTerm = useDebounce(searchValue, 500);
   const {data, isLoading} = useSearchQuery(debouncedSearchTerm);
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={[styles.header, FONTS.h1]}>

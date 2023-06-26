@@ -1,27 +1,41 @@
 import Lottie from 'lottie-react-native';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {SIZES} from '../theme';
+import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import animations from '../assets/animations';
+import {COLORS, FONTS, SIZES} from '../theme';
 
 type Props = {};
 
 const CustomLoading: React.FC<Props> = () => {
   return (
-    <View style={styles.container}>
-      <Lottie source={animations.anLoading} autoPlay />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.loadingHolder}>
+        <Lottie source={animations.anLoading} autoPlay />
+      </View>
+      <Text style={styles.txtLoading}>{'Loading...'}</Text>
+    </SafeAreaView>
   );
 };
 
 export default CustomLoading;
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: SIZES.horizontalPadding,
+  txtLoading: {
+    ...FONTS.h1,
+    color: COLORS.WHITE,
+  },
+  loadingHolder: {
     width: SIZES.width,
     height: SIZES.height / 5,
-    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+  },
+  container: {
+    backgroundColor: COLORS.PRIMARY,
+    flex: 1,
+    width: SIZES.width,
+    height: SIZES.height,
     justifyContent: 'center',
     alignItems: 'center',
   },

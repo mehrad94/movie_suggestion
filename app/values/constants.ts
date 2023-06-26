@@ -6,4 +6,7 @@ export const SCREEN_HOME = 'SCREEN_HOME';
 export const SCREEN_SEARCH = 'SCREEN_SEARCH';
 export const SCREEN_NEWS = 'SCREEN_NEWS';
 export const SCREEN_TOP = 'SCREEN_TOP';
+export const SCREEN_MOVIE = 'SCREEN_MOVIE';
+export const SCREEN_SPLASH = 'SCREEN_SPLASH';
+export const BOTTOM_TAB_STACK = 'BOTTOM_TAB_STACK';
 export const SEARCH_CATEGORIES = ['Movies', 'Tv Series', 'People'];

@@ -1,5 +1,5 @@
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {memo} from 'react';
 import {IGenreResponse} from '../interfaces';
 import {COLORS, FONTS, RANDOM_COLOR, SIZES} from '../theme';
 import LinearGradient from 'react-native-linear-gradient';
@@ -37,7 +37,7 @@ const GenreList: React.FC<Props> = ({data}) => {
   );
 };
 
-export default GenreList;
+export default memo(GenreList);
 
 const styles = StyleSheet.create({
   container: {

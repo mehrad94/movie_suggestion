@@ -1,89 +1,40 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {
-  CarouselMovie,
-  CarouselNews,
-  CustomError,
-  CustomLoading,
-  GenreList,
-} from '../components';
-import {
-  useGetMovieGenreQuery,
-  useGetShowGenreQuery,
-  useLatestNewsQuery,
-  usePopularMovieQuery,
-  usePopularTvShowQuery,
-} from '../redux/api-slice';
+import {useSelector} from 'react-redux';
+import {CarouselMovie, CarouselNews, GenreList} from '../components';
+import {IMovieReduxState} from '../interfaces';
+import {RootState} from '../redux/store';
 import {COLORS, FONTS, SIZES} from '../theme';
 
 const HomeScreen = () => {
-  const popularMovie = usePopularMovieQuery();
-  const popularTvShow = usePopularTvShowQuery();
-  const latestNews = useLatestNewsQuery();
-  const movieGenre = useGetMovieGenreQuery();
-  const showGenre = useGetShowGenreQuery();
+  const movieStore: IMovieReduxState = useSelector(
+    (state: RootState) => state.movies,
+  );
 
-  if (
-    popularMovie.isError ||
-    popularTvShow.isError ||
-    latestNews.isError ||
-    movieGenre.isError ||
-    showGenre.isError
-  ) {
-    return (
-      <SafeAreaView style={styles.containerLoading}>
-        <CustomError
-          onClick={() => {
-            popularMovie.refetch();
-            popularTvShow.refetch();
-            latestNews.refetch();
-            movieGenre.refetch();
-            showGenre.refetch();
-          }}
-        />
-      </SafeAreaView>
-    );
-  }
-  if (
-    !showGenre.data ||
-    !movieGenre.data ||
-    popularMovie.isLoading ||
-    !popularMovie.data ||
-    popularTvShow.isLoading ||
-    !popularTvShow.data ||
-    !latestNews.data ||
-    latestNews.isLoading
-  ) {
-    return (
-      <SafeAreaView style={styles.containerLoading}>
-        <CustomLoading />
-      </SafeAreaView>
-    );
-  }
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <Text style={styles.boxOfficeHeader}>Imdb Live</Text>
-        <CarouselNews data={latestNews.data} />
+        <CarouselNews data={movieStore.latestNewsStore} />
 
         <Text style={styles.boxOfficeHeader}>Trend Movie</Text>
-        <CarouselMovie data={popularMovie.data} />
+        <CarouselMovie data={movieStore.popularMovieStore} />
 
         <Text style={styles.boxOfficeHeader}>Movie Genre</Text>
-        <GenreList data={movieGenre.data} />
+        <GenreList data={movieStore.movieGenreStore} />
 
         <Text style={styles.boxOfficeHeader}>Trend Movie</Text>
-        <CarouselMovie data={popularTvShow.data} />
+        <CarouselMovie data={movieStore.popularTvShowStore} />
 
         <Text style={styles.boxOfficeHeader}>Tv Show Genre</Text>
-        <GenreList data={showGenre.data} />
+        <GenreList data={movieStore.tvShowGenreStore} />
       </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default memo(HomeScreen);
 
 const styles = StyleSheet.create({
   container: {

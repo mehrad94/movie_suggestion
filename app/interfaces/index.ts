@@ -1,3 +1,4 @@
+import {NavigatorScreenParams} from '@react-navigation/native';
 export interface Movie {
   adult: boolean;
   backdrop_path: string;
@@ -93,6 +94,65 @@ export interface ISearchResponse {
 export interface IGenreResponse {
   title: string;
 }
+
 export interface IGenre {
   title: string;
 }
+
+export type IRootStackParams = {
+  SCREEN_SPLASH: undefined;
+  SCREEN_MOVIE: undefined;
+  BOTTOM_TAB_STACK: IRootBottomTabParams;
+};
+
+export type IRootStackParamList = {
+  SCREEN_MOVIE: undefined;
+  SCREEN_SPLASH: undefined;
+  BOTTOM_TAB_STACK: NavigatorScreenParams<IRootBottomTabParams>;
+};
+
+export type IRootBottomTabParams = {
+  SCREEN_HOME: undefined;
+  SCREEN_TOP: undefined;
+  SCREEN_SEARCH: undefined;
+};
+
+export interface IMoreLike {
+  poster: string;
+  url: string;
+  rating: string;
+  title: string;
+}
+
+export interface IMovieFull {
+  poster: string;
+  movieTitle: string;
+  rating: string;
+  releasedYear: string;
+  pg: string;
+  duration: string;
+  directors: string[];
+  writers: string[];
+  cast: ICast[];
+  genres: string[];
+  storyline: string;
+  moreLike: IMoreLike[];
+  gallery: string[];
+}
+
+export interface ICast {
+  name: string;
+  avatar: string;
+  character: string;
+  profile: string;
+}
+export type IMovieReduxState = {
+  selectedMovieStore: IMovieFull;
+  tvShowGenreStore: IGenre[];
+  movieGenreStore: IGenre[];
+  popularMovieStore: MovieType1[];
+  popularTvShowStore: MovieType1[];
+  latestNewsStore: NewsType[];
+  top250MovieStore: MovieType1[];
+  top250ShowStore: MovieType1[];
+};

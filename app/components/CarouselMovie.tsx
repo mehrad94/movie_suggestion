@@ -1,10 +1,23 @@
-import React from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import React, {memo, useEffect, useState} from 'react';
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack/lib/typescript/src/types';
 import Carousel from 'react-native-snap-carousel';
-import {MovieType1} from '../interfaces';
+import {useDispatch} from 'react-redux';
+import {IRootStackParams, MovieType1} from '../interfaces';
+import {useGetMovieInfoQuery} from '../redux/api-slice';
+import {selectedMovieStore} from '../redux/movie-slice';
 import {COLORS, FONTS, SIZES} from '../theme';
 import {posterUrl} from '../utils';
+import {SCREEN_MOVIE} from '../values/constants';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.75);
@@ -14,9 +27,28 @@ interface Props {
 }
 
 const CarouselMovie: React.FC<Props> = ({data}) => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<IRootStackParams>>();
+  const dispatch = useDispatch();
+  const [movieId, setMovieId] = useState('');
+  const movieInfo = useGetMovieInfoQuery(movieId);
+
+  useEffect(() => {
+    console.log({movieId, 2: movieInfo.isLoading, 3: movieInfo.data});
+    if (movieId !== '' && !movieInfo.isLoading && movieInfo.data) {
+      dispatch(selectedMovieStore(movieInfo.data));
+      navigation.push(SCREEN_MOVIE);
+    }
+  }, [movieId, dispatch, movieInfo.data, movieInfo.isLoading, navigation]);
+
   const _renderItem = (movie: MovieType1) => {
     return (
-      <View style={styles.itemContainer} key={movie.movieId}>
+      <TouchableOpacity
+        onPress={() => {
+          setMovieId(movie.movieId);
+        }}
+        style={styles.itemContainer}
+        key={movie.movieId}>
         <Image
           resizeMode="stretch"
           style={styles.movieBanner}
@@ -34,10 +66,9 @@ const CarouselMovie: React.FC<Props> = ({data}) => {
             <Text style={styles.txtRating}>{movie.rating}</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
-
   return (
     <Carousel
       snapToAlignment="center"
@@ -51,7 +82,7 @@ const CarouselMovie: React.FC<Props> = ({data}) => {
   );
 };
 
-export default CarouselMovie;
+export default memo(CarouselMovie);
 
 const styles = StyleSheet.create({
   txtTitle: {
