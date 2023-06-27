@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {Image, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import {useSelector} from 'react-redux';
 import {CustomLoading} from '../components';
-import {IMovieFull, IMovieReduxState} from '../interfaces';
+import {IMovieFull} from '../interfaces';
 import {RootState} from '../redux/store';
 import {COLORS} from '../theme';
 
@@ -16,7 +16,11 @@ const MovieScreen = () => {
   if (!selectedMovie.movieTitle) {
     return <CustomLoading />;
   }
-  return <SafeAreaView style={styles.container}></SafeAreaView>;
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text>{'SALAM'}</Text>
+    </SafeAreaView>
+  );
 };
 
 export default MovieScreen;
