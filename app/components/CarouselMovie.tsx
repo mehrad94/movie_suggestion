@@ -34,7 +34,6 @@ const CarouselMovie: React.FC<Props> = ({data}) => {
   const movieInfo = useGetMovieInfoQuery(movieId);
 
   useEffect(() => {
-    console.log({movieId, 2: movieInfo.isLoading, 3: movieInfo.data});
     if (movieId !== '' && !movieInfo.isLoading && movieInfo.data) {
       dispatch(selectedMovieStore(movieInfo.data));
       navigation.push(SCREEN_MOVIE);

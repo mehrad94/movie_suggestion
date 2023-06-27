@@ -1,6 +1,6 @@
 {
   "name": "movie_suggestion",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "private": true,
   "scripts": {
     "version": "npx react-native-version --never-amend",

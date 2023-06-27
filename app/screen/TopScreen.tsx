@@ -1,21 +1,19 @@
 import React, {memo} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import {CustomLoading, VerticalCarousel} from '../components';
-import {useTopMovieQuery} from '../redux/api-slice';
+import {useSelector} from 'react-redux';
+import {VerticalCarousel} from '../components';
+import {MovieType1} from '../interfaces';
+import {RootState} from '../redux/store';
 import {COLORS} from '../theme';
 
 const TopScreen = () => {
-  const {data, isLoading} = useTopMovieQuery();
-  if (isLoading || !data) {
-    return (
-      <SafeAreaView style={styles.containerLoading}>
-        <CustomLoading />
-      </SafeAreaView>
-    );
-  }
+  const topMovie: MovieType1[] = useSelector(
+    (state: RootState) => state.movies.top250MovieStore,
+  );
+
   return (
     <SafeAreaView style={styles.container}>
-      <VerticalCarousel data={data} />
+      <VerticalCarousel data={topMovie} />
     </SafeAreaView>
   );
 };

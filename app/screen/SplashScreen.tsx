@@ -10,12 +10,14 @@ import {
   useLatestNewsQuery,
   usePopularMovieQuery,
   usePopularTvShowQuery,
+  useTopMovieQuery,
 } from '../redux/api-slice';
 import {
   latestNewsStore,
   movieGenreStore,
   popularMovieStore,
   popularTvShowStore,
+  top250MovieStore,
   tvShowGenreStore,
 } from '../redux/movie-slice';
 import {COLORS, FONTS, SIZES} from '../theme';
@@ -28,12 +30,14 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
   const popularTvShow = usePopularTvShowQuery();
   const movieGenre = useGetMovieGenreQuery();
   const showGenre = useGetShowGenreQuery();
+  const topMovie = useTopMovieQuery();
   const dispatch = useDispatch();
   const [loadingProgress, setLoadingProgress] = useState(0);
   useEffect(() => {
     if (
       loadingProgress >= 100 &&
       latestNews.data &&
+      topMovie.data &&
       popularMovie.data &&
       popularTvShow.data &&
       movieGenre.data &&
@@ -43,6 +47,7 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
       dispatch(popularMovieStore(popularMovie.data));
       dispatch(popularTvShowStore(popularTvShow.data));
       dispatch(movieGenreStore(movieGenre.data));
+      dispatch(top250MovieStore(topMovie.data));
       dispatch(tvShowGenreStore(showGenre.data));
       navigation.replace('BOTTOM_TAB_STACK', {screen: 'SCREEN_HOME'});
     }
@@ -58,6 +63,7 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
     movieGenre,
     showGenre,
     navigation,
+    topMovie,
   ]);
 
   return (
