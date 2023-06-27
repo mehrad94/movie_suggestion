@@ -3,3 +3,4 @@ export {default as SearchScreen} from './SearchScreen';
 export {default as MovieScreen} from './MovieScreen';
 export {default as TopScreen} from './TopScreen';
 export {default as SplashScreen} from './SplashScreen';
+export {default as Top250Screen} from './Top250Screen';

@@ -8,7 +8,7 @@ import {
   MovieScreen,
   SearchScreen,
   SplashScreen,
-  TopScreen,
+  Top250Screen,
 } from '../screen';
 import {COLORS} from '../theme';
 import {
@@ -40,7 +40,7 @@ const BottomNavigation = () => {
       })}>
       <Tab.Screen name={SCREEN_HOME} component={HomeScreen} />
       <Tab.Screen name={SCREEN_SEARCH} component={SearchScreen} />
-      <Tab.Screen name={SCREEN_TOP} component={TopScreen} />
+      <Tab.Screen name={SCREEN_TOP} component={Top250Screen} />
     </Tab.Navigator>
   );
 };

@@ -8,3 +8,6 @@ export {default as CustomError} from './CustomError';
 export {default as VerticalCarousel} from './VerticalCarousel';
 export {default as BottomTabIcon} from './BottomTabIcon';
 export {default as ProgressBar} from './ProgressBar';
+export {default as TopHeader} from './TopHeader';
+export {default as TopCarouselItem} from './TopCarouselItem';
+export {default as ImdbLogo} from './ImdbLogo';

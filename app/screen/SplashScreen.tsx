@@ -33,23 +33,36 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
   const topMovie = useTopMovieQuery();
   const dispatch = useDispatch();
   const [loadingProgress, setLoadingProgress] = useState(0);
+
   useEffect(() => {
-    if (
-      loadingProgress >= 100 &&
-      latestNews.data &&
-      topMovie.data &&
-      popularMovie.data &&
-      popularTvShow.data &&
-      movieGenre.data &&
-      showGenre.data
-    ) {
-      dispatch(latestNewsStore(latestNews.data));
-      dispatch(popularMovieStore(popularMovie.data));
-      dispatch(popularTvShowStore(popularTvShow.data));
-      dispatch(movieGenreStore(movieGenre.data));
-      dispatch(top250MovieStore(topMovie.data));
-      dispatch(tvShowGenreStore(showGenre.data));
-      navigation.replace('BOTTOM_TAB_STACK', {screen: 'SCREEN_HOME'});
+    if (loadingProgress >= 100) {
+      if (latestNews === undefined || latestNews?.data?.length! <= 0) {
+        latestNews.refetch();
+      } else if (topMovie === undefined || topMovie?.data?.length! <= 0) {
+        topMovie.refetch();
+      } else if (
+        popularMovie === undefined ||
+        popularMovie?.data?.length! <= 0
+      ) {
+        popularMovie.refetch();
+      } else if (
+        popularTvShow === undefined ||
+        popularTvShow?.data?.length! <= 0
+      ) {
+        popularTvShow.refetch();
+      } else if (movieGenre === undefined || movieGenre?.data?.length! <= 0) {
+        movieGenre.refetch();
+      } else if (showGenre === undefined || showGenre?.data?.length! <= 0) {
+        showGenre.refetch();
+      } else {
+        dispatch(latestNewsStore(latestNews.data!));
+        dispatch(popularMovieStore(popularMovie.data!));
+        dispatch(popularTvShowStore(popularTvShow.data!));
+        dispatch(movieGenreStore(movieGenre.data!));
+        dispatch(top250MovieStore(topMovie.data!));
+        dispatch(tvShowGenreStore(showGenre.data!));
+        navigation.replace('BOTTOM_TAB_STACK', {screen: 'SCREEN_HOME'});
+      }
     }
     setTimeout(() => {
       setLoadingProgress(loadingProgress + 10);

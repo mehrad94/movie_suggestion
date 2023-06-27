@@ -34,6 +34,7 @@ export const RANDOM_COLOR = [
 ];
 
 export const SIZES = {
+  CAROUSEL_RATIO: 0.76,
   largeRadius: 30,
   mediumRadius: 20,
   smallRadius: 15,
@@ -55,7 +56,13 @@ export const CAROUSEL_SIZE = {
   ITEM_WIDTH: SIZES.width * SIZES.SCALE,
   ITEM_HEIGHT: SIZES.height / 2,
 };
-
+export const TOP_CAROUSEL_SIZES = {
+  OVERFLOW_HEIGHT: 70,
+  SPACING: 10,
+  ITEM_WIDTH: SIZES.width * SIZES.CAROUSEL_RATIO,
+  ITEM_HEIGHT: SIZES.width * SIZES.CAROUSEL_RATIO * 1.7,
+  VISIBLE_ITEMS: 3,
+};
 export const FONTS = {
   h1: {
     fontSize: 24,
