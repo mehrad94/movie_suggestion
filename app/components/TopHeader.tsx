@@ -1,7 +1,7 @@
 import React from 'react';
 import {Animated, StyleSheet, Text, View} from 'react-native';
 import {MovieType1} from '../interfaces';
-import {COLORS, FONTS, TOP_CAROUSEL_SIZES} from '../theme';
+import {COLORS, FONTS, SIZES, TOP_CAROUSEL_SIZES} from '../theme';
 import ImdbLogo from './ImdbLogo';
 
 type Props = {
@@ -53,6 +53,7 @@ export default TopHeader;
 
 const styles = StyleSheet.create({
   txtRating: {
+    marginLeft: SIZES.medium,
     ...FONTS.h2,
     color: COLORS.WHITE,
     fontWeight: 'bold',
@@ -63,8 +64,10 @@ const styles = StyleSheet.create({
   overflowContainer: {
     height: TOP_CAROUSEL_SIZES.OVERFLOW_HEIGHT,
     overflow: 'hidden',
+    marginBottom: 20,
   },
   itemContainer: {
+    paddingVertical: SIZES.small,
     height: TOP_CAROUSEL_SIZES.OVERFLOW_HEIGHT,
     padding: TOP_CAROUSEL_SIZES.SPACING * 2,
   },

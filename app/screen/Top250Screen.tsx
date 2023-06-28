@@ -17,7 +17,7 @@ import {useSelector} from 'react-redux';
 import {TopCarouselItem, TopHeader} from '../components';
 import {MovieType1} from '../interfaces';
 import {RootState} from '../redux/store';
-import {COLORS, FONTS, TOP_CAROUSEL_SIZES} from '../theme';
+import {COLORS, FONTS, SIZES, TOP_CAROUSEL_SIZES} from '../theme';
 
 export default function Top250Screen() {
   const topMovie: MovieType1[] = useSelector(
@@ -84,6 +84,7 @@ export default function Top250Screen() {
         <SafeAreaView style={styles.container}>
           <StatusBar hidden />
           <Text style={styles.title}>{'Top 250 Movie'}</Text>
+          <Text style={styles.subtitle}>{'(Base on imdb rating)'}</Text>
           <FlatList
             data={data}
             keyExtractor={(_, _index) => String(_index)}
@@ -108,16 +109,25 @@ export default function Top250Screen() {
 }
 
 const styles = StyleSheet.create({
+  subtitle: {
+    textAlign: 'center',
+    ...FONTS.h3,
+    color: COLORS.WHITE,
+    borderBottomColor: COLORS.SECONDARY,
+    borderBottomWidth: 5,
+    paddingBottom: SIZES.small,
+  },
   title: {
+    marginTop: SIZES.medium,
     ...FONTS.h1,
     textAlign: 'center',
     color: COLORS.WHITE,
   },
   flatListContainer: {
     flex: 1,
+    height: TOP_CAROUSEL_SIZES.ITEM_HEIGHT + 20,
     justifyContent: 'center',
-    padding: TOP_CAROUSEL_SIZES.SPACING * 2,
-    marginTop: 50,
+    marginTop: SIZES.height / 20,
   },
 
   container: {
