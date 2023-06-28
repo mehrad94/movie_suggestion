@@ -10,7 +10,7 @@ import {
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://92.205.183.154:3001/api/v1',
+    baseUrl: 'https://bamandevelopers.ir/api/v1',
   }),
   endpoints: builder => ({
     boxOffice: builder.query<any, void>({
