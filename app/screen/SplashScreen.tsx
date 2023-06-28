@@ -33,51 +33,87 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
   const topMovie = useTopMovieQuery();
   const dispatch = useDispatch();
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [state, setState] = useState({
+    latestNews: false,
+    popularMovie: false,
+    popularTvShow: false,
+    movieGenre: false,
+    showGenre: false,
+    topMovie: false,
+  });
+  useEffect(() => {
+    if (latestNews.data && latestNews.data.length > 0) {
+      dispatch(latestNewsStore(latestNews.data!));
+      setState(prev => ({...prev, latestNews: true}));
+    }
+    if (latestNews.isError) {
+      latestNews.refetch();
+    }
+  }, [latestNews, dispatch]);
 
   useEffect(() => {
-    if (loadingProgress >= 100) {
-      if (latestNews === undefined || latestNews?.data?.length! <= 0) {
-        latestNews.refetch();
-      } else if (topMovie === undefined || topMovie?.data?.length! <= 0) {
-        topMovie.refetch();
-      } else if (
-        popularMovie === undefined ||
-        popularMovie?.data?.length! <= 0
-      ) {
-        popularMovie.refetch();
-      } else if (
-        popularTvShow === undefined ||
-        popularTvShow?.data?.length! <= 0
-      ) {
-        popularTvShow.refetch();
-      } else if (movieGenre === undefined || movieGenre?.data?.length! <= 0) {
-        movieGenre.refetch();
-      } else if (showGenre === undefined || showGenre?.data?.length! <= 0) {
-        showGenre.refetch();
-      } else {
-        dispatch(latestNewsStore(latestNews.data!));
-        dispatch(popularMovieStore(popularMovie.data!));
-        dispatch(popularTvShowStore(popularTvShow.data!));
-        dispatch(movieGenreStore(movieGenre.data!));
-        dispatch(top250MovieStore(topMovie.data!));
-        dispatch(tvShowGenreStore(showGenre.data!));
-        navigation.replace('BOTTOM_TAB_STACK', {screen: 'SCREEN_HOME'});
-      }
+    if (popularMovie.data && popularMovie.data.length > 0) {
+      dispatch(popularMovieStore(popularMovie.data!));
+      setState(prev => ({...prev, popularMovie: true}));
+    }
+    if (popularMovie.isError) {
+      popularMovie.refetch();
+    }
+  }, [popularMovie, dispatch]);
+
+  useEffect(() => {
+    if (movieGenre.data && movieGenre.data.length > 0) {
+      dispatch(movieGenreStore(movieGenre.data!));
+      setState(prev => ({...prev, movieGenre: true}));
+    }
+    if (movieGenre.isError) {
+      movieGenre.refetch();
+    }
+  }, [movieGenre, dispatch]);
+
+  useEffect(() => {
+    if (showGenre.data && showGenre.data.length > 0) {
+      dispatch(tvShowGenreStore(showGenre.data!));
+      setState(prev => ({...prev, showGenre: true}));
+    }
+    if (showGenre.isError) {
+      showGenre.refetch();
+    }
+  }, [showGenre, dispatch]);
+
+  useEffect(() => {
+    if (topMovie.data && topMovie.data.length > 0) {
+      dispatch(top250MovieStore(topMovie.data!));
+      setState(prev => ({...prev, topMovie: true}));
+    }
+    if (topMovie.isError) {
+      topMovie.refetch();
+    }
+  }, [topMovie, dispatch]);
+
+  useEffect(() => {
+    if (popularTvShow.data && popularTvShow.data.length > 0) {
+      dispatch(popularTvShowStore(popularTvShow.data!));
+      setState(prev => ({...prev, popularTvShow: true}));
+    }
+    if (popularTvShow.isError) {
+      popularTvShow.refetch();
+    }
+  }, [popularTvShow, dispatch]);
+
+  useEffect(() => {
+    if (
+      loadingProgress >= 100 &&
+      Object.values(state).every(value => value === true)
+    ) {
+      navigation.replace('BOTTOM_TAB_STACK', {screen: 'SCREEN_HOME'});
     }
     setTimeout(() => {
-      setLoadingProgress(loadingProgress + 10);
-    }, 1000);
-  }, [
-    loadingProgress,
-    latestNews,
-    dispatch,
-    popularMovie,
-    popularTvShow,
-    movieGenre,
-    showGenre,
-    navigation,
-    topMovie,
-  ]);
+      if (loadingProgress < 100) {
+        setLoadingProgress(loadingProgress + 10);
+      }
+    }, 500);
+  }, [loadingProgress, navigation, state]);
 
   return (
     <SafeAreaView style={styles.container}>
