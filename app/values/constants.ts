@@ -10,3 +10,18 @@ export const SCREEN_MOVIE = 'SCREEN_MOVIE';
 export const SCREEN_SPLASH = 'SCREEN_SPLASH';
 export const BOTTOM_TAB_STACK = 'BOTTOM_TAB_STACK';
 export const SEARCH_CATEGORIES = ['Movies', 'Tv Series', 'People'];
+export const EMPTY_SELECTED_MOVIE = {
+  cast: [],
+  directors: [],
+  duration: '',
+  gallery: [],
+  genres: [],
+  moreLike: [],
+  movieTitle: '',
+  pg: '',
+  poster: '',
+  rating: '',
+  releasedYear: '',
+  storyline: '',
+  writers: [],
+};

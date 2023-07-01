@@ -6,23 +6,10 @@ import {
   MovieType1,
   NewsType,
 } from '../interfaces';
+import {EMPTY_SELECTED_MOVIE} from '../values/constants';
 
 const initialState: IMovieReduxState = {
-  selectedMovieStore: {
-    cast: [],
-    directors: [],
-    duration: '',
-    gallery: [],
-    genres: [],
-    moreLike: [],
-    movieTitle: '',
-    pg: '',
-    poster: '',
-    rating: '',
-    releasedYear: '',
-    storyline: '',
-    writers: [],
-  },
+  selectedMovieStore: EMPTY_SELECTED_MOVIE,
   movieGenreStore: [],
   tvShowGenreStore: [],
   popularMovieStore: [],

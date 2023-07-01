@@ -11,3 +11,6 @@ export {default as ProgressBar} from './ProgressBar';
 export {default as TopHeader} from './TopHeader';
 export {default as TopCarouselItem} from './TopCarouselItem';
 export {default as ImdbLogo} from './ImdbLogo';
+export {default as BackIcon} from './BackIcon';
+export {default as LittleMovieList} from './LittleMovieList';
+export {default as CastList} from './CastList';

@@ -31,7 +31,6 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
   const movieGenre = useGetMovieGenreQuery();
   const showGenre = useGetShowGenreQuery();
   const topMovie = useTopMovieQuery();
-  console.log({latestNews});
   const dispatch = useDispatch();
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [state, setState] = useState({
@@ -102,7 +101,6 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
     }
   }, [popularTvShow, dispatch]);
 
-  console.log({state, loadingProgress});
   useEffect(() => {
     if (
       loadingProgress >= 100 &&

@@ -133,10 +133,10 @@ export interface IMovieFull {
   duration: string;
   directors: string[];
   writers: string[];
-  cast: ICast[];
+  casts: ICast[];
   genres: string[];
   storyline: string;
-  moreLike: IMoreLike[];
+  moreLike: ILittleMovie[];
   gallery: string[];
 }
 
@@ -146,6 +146,7 @@ export interface ICast {
   character: string;
   profile: string;
 }
+
 export type IMovieReduxState = {
   selectedMovieStore: IMovieFull;
   tvShowGenreStore: IGenre[];
@@ -156,3 +157,10 @@ export type IMovieReduxState = {
   top250MovieStore: MovieType1[];
   top250ShowStore: MovieType1[];
 };
+
+export interface ILittleMovie {
+  poster: string;
+  url: string;
+  rating: string;
+  title: string;
+}
